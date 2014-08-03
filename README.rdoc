@@ -5,6 +5,8 @@ Author:: {Rob Olson}[https://github.com/robolson]
 Email:: [first name] [at] thinkingdigitally.com
 GitHub:: https://github.com/robolson/ruby-poker
 
+== Adjusted to work for RubyMotion!
+
 == Description
 
 Ruby-Poker handles the logic for getting the rank of a poker hand. It can also be used to compare two or more hands to determine which hand has the highest poker value.

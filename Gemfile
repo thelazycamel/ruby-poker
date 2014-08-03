@@ -4,3 +4,4 @@ gemspec
 
 # Include rake in Gemfile so that `bundle exec rake` doesn't raise an error
 gem 'rake', :group => :test
+gem 'pry', :group => :test
