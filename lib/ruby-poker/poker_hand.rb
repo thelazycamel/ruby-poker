@@ -517,7 +517,6 @@ class PokerHand
 
   def rearrange_full_house(cards)
     card_array = cards.split.uniq
-    card_array.delete_if{|c| c.length != 2}
     card_hash = Hash[card_array.collect{|c| [c[0], card_array.count{|n| n[0] == c[0]}]}]
     arranged_hand = card_array.select{|c| c if c[0] == card_hash.key(3)}
     arranged_hand += card_array.select{|c| c if c[0] == card_hash.key(2)}
