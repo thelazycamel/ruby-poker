@@ -9,6 +9,7 @@ class TestFullHouse < Test::Unit::TestCase
       @fh_low_pair = PokerHand.new("8h 8d 8c Qh Td 4h 4d")
       @fh_high_trips = PokerHand.new("Kh Kd Kc Qh Td 8h 8d")
       @fh_low_trips = PokerHand.new("4h 4d 4c Qh Td Kd Ks")
+      @fh_two_trips = PokerHand.new("8s 8d 8c 5h 5c 5d 9d")
     end
 
     should "full house #sort_using_rank from seven cards (high pair) should return correct cards" do
@@ -25,6 +26,10 @@ class TestFullHouse < Test::Unit::TestCase
 
     should "full house #sort_using_rank from seven cards (low trips) should return correct cards" do
       assert_equal("4h 4d 4c Ks Kd Qh Td", @fh_low_trips.sort_using_rank)
+    end
+
+    should "full house #sort_using_rank from seven cards (two sets of trips) should return correct cards" do
+      assert_equal("8s 8d 8c 5h 5d 5c 9d", @fh_two_trips.sort_using_rank)
     end
 
   end

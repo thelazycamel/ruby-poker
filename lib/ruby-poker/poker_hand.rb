@@ -506,9 +506,17 @@ class PokerHand
   def rearrange_full_house(cards)
     card_array = cards.split.uniq
     card_hash = Hash[card_array.collect{|c| [c[0], card_array.count{|n| n[0] == c[0]}]}]
-    arranged_hand = card_array.select{|c| c if c[0] == card_hash.key(3)}
-    arranged_hand += card_array.select{|c| c if c[0] == card_hash.key(2)}
-    (arranged_hand + (card_array - arranged_hand)).join(" ")
+    arranged_hand = []
+    #take the first set of trips
+    card_array.delete_if{|c| arranged_hand << c if c[0] == card_hash.key(3)}
+    #delete the trips value from the card_hash
+    card_hash.delete(arranged_hand[0][0]) if arranged_hand[0]
+    #check for and take the second set of trips
+    card_array.delete_if{|c| arranged_hand << c if c[0] == card_hash.key(3)}
+    #take the pair
+    card_array.delete_if{|c| arranged_hand << c if c[0] == card_hash.key(2)}
+    #add the remaining cards back into the array
+    (arranged_hand + card_array).join(" ")
   end
 
 end
